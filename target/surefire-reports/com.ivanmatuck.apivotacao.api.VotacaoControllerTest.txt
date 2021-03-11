@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.ivanmatuck.apivotacao.api.VotacaoControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.008 s <<< FAILURE! - in com.ivanmatuck.apivotacao.api.VotacaoControllerTest
+initializationError(com.ivanmatuck.apivotacao.api.VotacaoControllerTest)  Time elapsed: 0 s  <<< ERROR!
+org.junit.runners.model.InvalidTestClassError: 
+Invalid test class 'com.ivanmatuck.apivotacao.api.VotacaoControllerTest':
+  1. The class com.ivanmatuck.apivotacao.api.VotacaoControllerTest is not public.
+  2. Test class should have exactly one public constructor
+

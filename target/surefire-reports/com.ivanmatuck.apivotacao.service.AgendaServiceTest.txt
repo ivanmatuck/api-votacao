@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.ivanmatuck.apivotacao.service.AgendaServiceTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.431 s <<< FAILURE! - in com.ivanmatuck.apivotacao.service.AgendaServiceTest
+shouldReturnOneAgenda(com.ivanmatuck.apivotacao.service.AgendaServiceTest)  Time elapsed: 0.002 s  <<< ERROR!
+com.ivanmatuck.apivotacao.exception.NotFoundException: Agenda not found.
+	at com.ivanmatuck.apivotacao.service.AgendaServiceTest.shouldReturnOneAgenda(AgendaServiceTest.java:68)
+

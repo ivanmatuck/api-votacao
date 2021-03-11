@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.ivanmatuck.apivotacao.entity.VotacaoTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.ivanmatuck.apivotacao.entity.VotacaoTest
+initializationError(com.ivanmatuck.apivotacao.entity.VotacaoTest)  Time elapsed: 0 s  <<< ERROR!
+org.junit.runners.model.InvalidTestClassError: 
+Invalid test class 'com.ivanmatuck.apivotacao.entity.VotacaoTest':
+  1. The class com.ivanmatuck.apivotacao.entity.VotacaoTest is not public.
+  2. Test class should have exactly one public constructor
+

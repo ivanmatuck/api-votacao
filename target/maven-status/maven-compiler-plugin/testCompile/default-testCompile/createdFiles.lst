@@ -1,0 +1,5 @@
+com/ivanmatuck/apivotacao/service/VotacaoServiceTest.class
+com/ivanmatuck/apivotacao/entity/VotacaoTest.class
+com/ivanmatuck/apivotacao/api/AgendaControllerTest.class
+com/ivanmatuck/apivotacao/service/AgendaServiceTest.class
+com/ivanmatuck/apivotacao/api/VotacaoControllerTest.class

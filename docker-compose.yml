@@ -1,0 +1,60 @@
+---
+version: '2'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+      - 1433:1433
+    environment:
+      MSSQL_AGENT_ENABLED: "true"
+      MSSQL_PID: Root
+      SA_PASSWORD:
+      ACCEPT_EULA: "Y"
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    depends_on:
+      - sqlserver
+    ports:
+      - 2181:2181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - sqlserver
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  connect:
+    image: cdc:latest
+    depends_on:
+      - sqlserver
+      - zookeeper
+      - kafka
+    ports:
+      - 8083:8083
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: kafka:9092
+      CONNECT_REST_PORT: 8083
+      CONNECT_GROUP_ID: connect-1
+      CONNECT_CONFIG_STORAGE_TOPIC: connect-1-config
+      CONNECT_OFFSET_STORAGE_TOPIC: connect-1-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: connect-1-status
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_OFFSET.STORAGE.REPLICATION.FACTOR: 1
+      CONNECT_CONFIG.STORAGE.REPLICATION.FACTOR: 1
+      CONNECT_OFFSET.STORAGE.PARTITIONS: 1
+      CONNECT_STATUS.STORAGE.REPLICATION.FACTOR: 1
+      CONNECT_STATUS.STORAGE.PARTITIONS: 1
+      CONNECT_REST_ADVERTISED_HOST_NAME: localhost
